@@ -1,5 +1,5 @@
 import unittest
-from src.sending_bms_data import generate_random_number, verify_invalid_value, data_length, logging_temperature, logging_soc
+from src.sending_bms_data import generate_random_number, verify_invalid_value, data_length
 import src.config as Config
 
 
@@ -12,12 +12,6 @@ class sendingBMSdataTest(unittest.TestCase):
         self.state_of_charge_list = generate_random_number(Config.sensor_value_count,
                                                            Config.second_sensor_value['min_value'],
                                                            Config.second_sensor_value['max_value'])
-
-    def test_charging_temperature(self):
-        logging_temperature("charging temperature", self.charging_temperature_list)
-
-    def test_second_state_of_charge(self):
-        logging_soc("state_of_charge", self.state_of_charge_list)
 
     def test_check_invalid_value(self):
         self.assertFalse(verify_invalid_value(0, 0, 45))

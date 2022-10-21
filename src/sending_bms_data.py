@@ -22,22 +22,6 @@ def data_length(data):
         return 0
 
 
-def logging_temperature(sensor_val, sensor_data):
-    for i in range(len(sensor_val)):
-        if verify_invalid_value(sensor_data[i], Config.first_sensor_value['min_value'],
-                                Config.first_sensor_value['max_value']):
-            sensor_data[i] = "invalid"
-        print('{{"{}":{}}}\n'.format(sensor_val, sensor_data[i]))
-
-
-def logging_soc(sensor_val, sensor_data):
-    for i in range(len(sensor_val)):
-        if verify_invalid_value(sensor_data[i], Config.second_sensor_value['min_value'],
-                                Config.second_sensor_value['max_value']):
-            sensor_data[i] = "invalid"
-        print('{{"{}":{}}}\n'.format(sensor_val, sensor_data[i]))
-
-
 def logging_sensor_data(data):
     length = data_length(data)
     for index in range(length):
