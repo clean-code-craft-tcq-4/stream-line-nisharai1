@@ -36,10 +36,14 @@ def logging_sensor_data(data):
 
 
 def main():
-    temperature_list = generate_random_number(Config.sensor_value_count, Config.range_values[Config.sensor[0]][0],
-                                              Config.range_values[Config.sensor[0]][1])
-    soc_list = generate_random_number(Config.sensor_value_count, Config.range_values[Config.sensor[1]][0],
-                                      Config.range_values[Config.sensor[1]][1])
+    temperature_list, soc_list = generate_random_number(Config.sensor_value_count,
+                                                        Config.range_values[Config.sensor[0]][0],
+                                                        Config.range_values[Config.sensor[0]][
+                                                            1]), generate_random_number(Config.sensor_value_count,
+                                                                                        Config.range_values[
+                                                                                            Config.sensor[1]][0],
+                                                                                        Config.range_values[
+                                                                                            Config.sensor[1]][1])
     logging_sensor_data({Config.sensor[0]: temperature_list, Config.sensor[1]: soc_list})
 
 
