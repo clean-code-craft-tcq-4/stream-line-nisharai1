@@ -1,5 +1,5 @@
 import unittest
-from src.sending_bms_data import generate_random_number, logging_temperature, logging_soc,  verify_invalid_value
+from src.sending_bms_data import generate_random_number, verify_invalid_value, data_length, logging_temperature, logging_soc
 import src.config as Config
 
 
@@ -28,3 +28,8 @@ class sendingBMSdataTest(unittest.TestCase):
         self.assertTrue(verify_invalid_value(46, 0, 45))
         self.assertTrue(verify_invalid_value(110, 0, 100))
         self.assertTrue(verify_invalid_value(110, -1, 100))
+
+    def test_data_length(self):
+        self.assertTrue(data_length({"temp": [0, -1, 5, 7], "soc": [-5, 2, 0, 6]}) == 4)
+        self.assertFalse(data_length({"temp": [0], "soc": [2]}) == 2)
+        self.assertTrue(data_length(-1) == 0)
