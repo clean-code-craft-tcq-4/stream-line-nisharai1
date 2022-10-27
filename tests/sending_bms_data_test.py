@@ -1,6 +1,6 @@
 import unittest
-from src.sending_bms_data import generate_random_number, verify_invalid_value, data_length
-import src.config as Config
+from Sender.sending_bms_data import generate_random_number, verify_invalid_value, data_length
+import Sender.config as Config
 
 
 class sendingBMSdataTest(unittest.TestCase):
